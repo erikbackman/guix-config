@@ -25,35 +25,35 @@
 
    ;; Boot-loader
    (bootloader (bootloader-configuration
-		(bootloader grub-efi-bootloader)
-		(target "/boot/efi")))
+                (bootloader grub-efi-bootloader)
+                (target "/boot/efi")))
    (file-systems (cons*
-		  (file-system
-		   (device (file-system-label "root"))
-		   (mount-point "/")
-		   (type "ext4"))
-		  (file-system
-		   (device (file-system-label "BOOT"))
-		   (mount-point "/boot/efi")
-		   (type "vfat")
-		   (create-mount-point? #t)
-		   (check? #f))
-		  %base-file-systems))
+                  (file-system
+                   (device (file-system-label "root"))
+                   (mount-point "/")
+                   (type "ext4"))
+                  (file-system
+                   (device (file-system-label "BOOT"))
+                   (mount-point "/boot/efi")
+                   (type "vfat")
+                   (create-mount-point? #t)
+                   (check? #f))
+                  %base-file-systems))
 
    ;; Users
    (users (cons (user-account
-		 (name "me")
-		 (group "users")
-		 (supplementary-groups '("wheel" "audio" "video")))
-		%base-user-accounts))
+                 (name "me")
+                 (group "users")
+                 (supplementary-groups '("wheel" "audio" "video")))
+                %base-user-accounts))
 
    ;; Globally-installed packages.
    (packages %my-base-packages)
 
    ;; Services
    (services (append (list
-		      (service dhcp-client-service-type))
-		     %base-services)))
+                      (service dhcp-client-service-type))
+                     %base-services)))
 )
 
 my-minimal-system

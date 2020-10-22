@@ -14,7 +14,6 @@
  networking
  sddm
  sound
- web
  xorg)
 (use-package-modules
  linux
@@ -27,7 +26,7 @@
    (inherit my-minimal-system)
    (kernel linux)
    (initrd microcode-initrd)
-   (firmware (list linux-firmware))
+   (firmware (list linux-firmware %base-firmware))
    (keyboard-layout (keyboard-layout "se"))
 
    (packages
@@ -37,12 +36,15 @@
            "sbcl"
            "stumpwm"
            "font-dejavu"
+           "font-iosevka"
            "next"
            "icecat"
            "ripgrep"
            "kitty"
            "streamlink"
            "mpv"
+           "xsetroot"
+           "feh"
            "nss-certs"))
      %my-base-packages))
 
